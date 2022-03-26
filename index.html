@@ -62,18 +62,32 @@
     // The same thing goes for objects, let's say we have a person object
 
     // with Objects
-    const person = {
-      name: 'Wes Bos',
-      age: 80
-    };
+      const person = {
+        name: 'Wes Bos',
+        age: 80
+      };
 
     // and think we make a copy:
+      // this just makes a reference and not a copy - original object changes using this method
+      // const captain = person;
+      // captain.number = 99;
+      // console.log(person);
 
     // how do we take a copy instead?
+      // use Object.assign, use a blank object ( {} ), fold in values from object (person), and then 3rd argument o fold in new ones
+      const cap2 = Object.assign({}, person, { number: 99, age: 12 });
+      console.log(cap2);
+      console.log(person);
 
-    // We will hopefully soon see the object ...spread
+    // or use the object ...spread
+      // works the same way to spread into an array as above
+      // takes every item out of iterable and into the containing object in this case
+      const cap3 = {...person};
+      console.log(cap3);
 
     // Things to note - this is only 1 level deep - both for Arrays and Objects. lodash has a cloneDeep method, but you should think twice before using it.
+
+      
 
   </script>
 
