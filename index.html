@@ -8,43 +8,56 @@
 
   <script>
     // start with strings, numbers and booleans
-    let age = 100;
-    let age2 = age;
-    console.log(age, age2); // result is 100, 100
-    age = 200;
-    console.log(age, age2); // result is 200, 100 because value of age goes into variable at the same time
+      // let age = 100;
+      // let age2 = age;
+      // console.log(age, age2); // result is 100, 100
+      // age = 200;
+      // console.log(age, age2); // result is 200, 100 because value of age goes into variable at the same time
 
-    let name = 'Lou';
-    let name2 = name;
-    console.log(name, name2);
-    name = 'Louis';
-    console.log(name, name2);
+      // let name = 'Lou';
+      // let name2 = name;
+      // console.log(name, name2);
+      // name = 'Louis';
+      // console.log(name, name2);
     // if you change/reassign the original variable, it will not update the other variable
 
-    // Let's say we have an array
-    const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
 
-    // and we want to make a copy of it.
+
+    // Let's say we have an array and we want to make a copy of it.
+      const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
+      const team = players;  
+      console.log(players, team);
 
     // You might think we can just do something like this:
+      // team[3] = 'Lux';
 
-    // however what happens when we update that array?
-
-    // now here is the problem!
-
-    // oh no - we have edited the original array too!
-
-    // Why? It's because that is an array reference, not an array copy. They both point to the same array!
+    // however what happens when we update that array? - makes a reference, not a copy
+      // updating team is NOT the array - team is a REFERENCE to original array
+      // when you try to update the array, it will go back to the original reference where it was
+      // this is NOT the same as with numbers, strings, booleans
 
     // So, how do we fix this? We take a copy instead!
+      const team2 = players.slice(); // returns entire array when slice is passed nothing
+      team2[3] = 'Lux';
+      console.log(team2); // includes the updated array value
+      console.log(players); // makes copy of original array
+      // therefore, using splice() will make a copy; then you can update array while still keeping the original one as is
 
-    // one way
-
-    // or create a new array and concat the old one in
+    // or create a new array ( [] ) and concat the old one in
+      const team3 = [].concat(players);
 
     // or use the new ES6 Spread
+      // takes every item out of iterable and into the containing array in this case
+      const team4 = [...players];
+      team4[3] = 'Billy';
+      console.log(team4);
+      console.log(players); // still keeps original array untouched
 
-    // now when we update it, the original one isn't changed
+    // or use array.from
+      const team5 = Array.from(players);
+      team5[3] = 'Marilyn';
+      console.log(team5); // updated
+      console.log(players); // untouched
 
     // The same thing goes for objects, let's say we have a person object
 
