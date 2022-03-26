@@ -8,6 +8,18 @@
 
   <script>
     // start with strings, numbers and booleans
+    let age = 100;
+    let age2 = age;
+    console.log(age, age2); // result is 100, 100
+    age = 200;
+    console.log(age, age2); // result is 200, 100 because value of age goes into variable at the same time
+
+    let name = 'Lou';
+    let name2 = name;
+    console.log(name, name2);
+    name = 'Louis';
+    console.log(name, name2);
+    // if you change/reassign the original variable, it will not update the other variable
 
     // Let's say we have an array
     const players = ['Wes', 'Sarah', 'Ryan', 'Poppy'];
